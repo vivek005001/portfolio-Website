@@ -37,30 +37,26 @@ const projects = [
   {
     title: "VizAssist",
     description: "Image Captioning App tailored for the visually impaired",
-    image: "/assets/projects/viz-assist.mp4",
-    href: "https://github.com/vivek005001/viz_assist",
+    videoId: "uwcl2Ytd_bo",
+    github: "https://github.com/vivek005001/viz_assist",
   },
-  
   {
     title: "Cultural Council Website",
-    description:
-      "Website for the Cultural Council of IIT Mandi",
-    image: "/assets/projects/cultural-council.mov",
-    href: "https://github.com/vivek005001/CulturalCouncilWebsite",
+    description: "Website for the Cultural Council of IIT Mandi",
+    videoId: "qFoNWkm_RBc",
+    github: "https://github.com/vivek005001/CulturalCouncilWebsite",
   },
   {
     title: "Health.AI",
-    description:
-      "Personal healthcare assistant capable of handling complex medical queries",
-    image: "/assets/projects/health-ai.mov",
-    href: "https://github.com/vivek005001/Health.ai",
+    description: "Personal healthcare assistant capable of handling complex medical queries",
+    videoId: "T1srRhvF3R8",
+    github: "https://github.com/vivek005001/Health.ai",
   },
   {
-    title: "Portfolio Website", 
-    description:
-      "Personal portfolio website showcasing my projects and skills",
-    image: "/assets/projects/portfolio.mov",
-    href: "https://github.com/vivek005001/portfolio-Website",
+    title: "Portfolio Website",
+    description: "Personal portfolio website showcasing my projects and skills",
+    videoId: "rMHUQuWNyyw",
+    github: "https://github.com/vivek005001/portfolio-Website",
   },
 ];
 
@@ -349,44 +345,52 @@ export default function Home() {
 
             {/* Carousel */}
             <div className="mt-14">
-              <Carousel setApi={setCarouselApi} className="w-full">
-                <CarouselContent>
-                  {projects.map((project) => (
-                    <CarouselItem key={project.title} className="md:basis-1/2">
-                      <Card id="tilt">
-                        <CardHeader className="relative p-0">
-                          <Link href={project.href} target="_blank" passHref>
-                            <div className="group relative aspect-video w-full">
-                              <video
-                                src={project.image}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="absolute inset-0 aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                              />
-                            </div>
-                          </Link>
-                        </CardHeader>
-                        <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
-                          <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
-                            {project.description}
-                          </CardTitle>
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
-              <div className="py-2 text-center text-sm text-muted-foreground">
-                <span className="font-semibold">
-                  {current} / {count}
-                </span>{" "}
-                projects
-              </div>
-            </div>
+  <Carousel setApi={setCarouselApi} className="w-full">
+    <CarouselContent>
+      {projects.map((project) => (
+        <CarouselItem key={project.title} className="md:basis-1/2">
+          <Card id="tilt">
+            <CardHeader className="relative p-0">
+              <Link href={project.github} target="_blank" passHref>
+                <div className="group relative aspect-video w-full cursor-pointer">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${project.videoId}?autoplay=1&controls=0&showinfo=0&rel=0&mute=1&loop=1&playlist=${project.videoId}`}
+                    title={`Video for ${project.title}`}
+                    allow="autoplay; encrypted-media"
+                    className="pointer-events-none absolute inset-0 aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                    frameBorder="0"
+                  />
+                  {/* Title Overlay - Top Left, no background */}
+                  <div className="absolute left-0 top-0 px-4 py-2">
+                    <h3 className="text-lg font-bold tracking-tight text-white drop-shadow">
+                      {project.title}
+                    </h3>
+                  </div>
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 transition-opacity duration-300 hover:bg-black/20" />
+                </div>
+              </Link>
+            </CardHeader>
+            <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+              <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
+                {project.description}
+              </CardTitle>
+            </CardContent>
+          </Card>
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+
+  <div className="py-2 text-center text-sm text-muted-foreground">
+    <span className="font-semibold">
+      {current} / {count}
+    </span>{" "}
+    projects
+  </div>
+</div>
           </div>
         </section>
 
