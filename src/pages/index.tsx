@@ -283,7 +283,7 @@ export default function Home() {
             className="my-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16 pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[36px]">
-              I'm a pre-final year CS undergrad at IIT Mandi with a focus on Full Stack {' '}
+              I'm a final year CS undergrad at IIT Mandi with a focus on Full Stack {' '}
               <span className="text-gradient">Web Development</span>,{' '}
               <span className="text-gradient">Deep Learning</span>, and{' '}
               <span className="text-gradient">UI/UX Design</span>.
